@@ -33,7 +33,6 @@ server {
         location /api/estudiantes/ {
             proxy_pass http://estudiantes/api/estudiantes-ms/;
         }
-#corregido
         location /api/convocatoria/ {
             proxy_pass http://convocatoria/api/convocatorias-ms/;
         }
@@ -41,9 +40,9 @@ server {
         location /api/empresas/ {
             proxy_pass http://empresas/api/empresas-ms/;
         }
-#malo
+
         location /api/evaluacion/ {
-            proxy_pass http://evaluacion/api/evaluacion/;
+            proxy_pass http://evaluacion/api/evaluacion-ms/;
         }
 
         location /api/practica/ {
@@ -57,7 +56,7 @@ server {
         location /api/solicitudes/ {
             proxy_pass http://solicitudes/api/solicitudes-ms/;
         }
-#malo desde afuera
+
         location /api/universidad/ {
             proxy_pass http://universidad/api/universidad-ms/;
         }
