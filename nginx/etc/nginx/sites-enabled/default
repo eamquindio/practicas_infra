@@ -62,5 +62,7 @@ server {
         }
         location /app/ {
             proxy_pass http://frontendpasantias/;
+            proxy_set_header                Host http://frontendpasantias;
+            proxy_pass_request_headers      on;
         }
 }
