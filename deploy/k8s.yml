@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: practicasalb
+  name: practicaseam
 spec:
   selector:
-    app: practicasalb
+    app: practicaseam
   ports:
   - protocol: TCP
     port: 80
@@ -14,23 +14,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: practicasalb
+  name: practicaseam
   labels:
-    app: practicasalb
+    app: practicaseam
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: practicasalb
+      app: practicaseam
       tier: backend
   template:
     metadata:
       labels:
-        app: practicasalb
+        app: practicaseam
         tier: backend
     spec:
       containers:
-      - name: practicasalb
+      - name: practicaseam
         image: gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}   
         ports:
         - name: http

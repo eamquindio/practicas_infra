@@ -1,31 +1,27 @@
 upstream estudiantes {
   server estudiantes;
 }
-
 upstream convocatoria {
   server convocatoria;
 }
-
 upstream empresas {
   server  empresas;
 }
-
 upstream evaluacion {
   server evaluacion;
 }
-
 upstream practica {
   server practica;
 }
-
 upstream psicologia {
   server psicologia;
 }
-
 upstream solicitudes {
   server solicitudes;
 }
-
+upstream universidad {
+  server universidad;
+}
 upstream frontendpasantias {
   server frontendpasantias;
 }

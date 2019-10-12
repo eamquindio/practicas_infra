@@ -33,7 +33,7 @@ jobs:
           command: |
             envsubst < ~/repo/deploy/k8s.yml > ~/repo/patched_k8s.yml
             kubectl apply -f ~/repo/patched_k8s.yml
-            kubectl rollout status deployment/practicasalb
+            kubectl rollout status deployment/practicaseam
 workflows:
   version: 2
   build:
