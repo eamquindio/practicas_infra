@@ -1,47 +1,42 @@
-
-#user  nobody;
-worker_processes  1;
-
-#error_log  logs/error.log;
-#error_log  logs/error.log  notice;
-#error_log  logs/error.log  info;
-
-#pid        logs/nginx.pid;
-
-events {
-    worker_connections  1024;
+upstream estudiantes {
+  server estudiantes;
 }
 
+upstream convocatorias {
+  server convocatorias;
+}
 
-http {
+upstream empresas {
+  server  empresas;
+}
 
-    upstream www-upstream-pool{
-        server unix:/tmp/php-fpm.sock;
-    }
+upstream evaluacion {
+  server evaluacion;
+}
 
-    include       mime.types;
-    default_type  application/octet-stream;
+upstream practica {
+  server practica;
+}
 
-    sendfile        on;
-    #tcp_nopush     on;
+upstream psicologia {
+  server psicologia;
+}
 
-    #keepalive_timeout  0;
-    keepalive_timeout  65;
+upstream solicitudes {
+  server solicitudes;
+}
 
-    #gzip  on;
+upstream pasantias {
+  server pasantias;
+}
 
-    server {
-        listen       8080;
-        server_name  localhost;
+upstream frontendpasantias {
+  server frontendpasantias;
+}
 
-        #charset koi8-r;
-
-        #access_log  logs/host.access.log  main;
-
-        location / {
-            root   html;
-            index  index.html index.htm;
-        }
+server {
+  listen        80;
+  server_name   pasantiaseam.org;
 
         location /api/estudiantes/ {
             proxy_pass http://estudiantes/api/estudiantes-ms/;
@@ -80,17 +75,4 @@ http {
         location /app/ {
             proxy_pass http://frontendpasantias/;
         }
-
-        #error_page  404              /404.html;
-
-        # redirect server error pages to the static page /50x.html
-        #
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
-    }
-
-
-    include servers/*;
 }
