@@ -26,10 +26,6 @@ upstream solicitudes {
   server solicitudes;
 }
 
-upstream pasantias {
-  server pasantias;
-}
-
 upstream frontendpasantias {
   server frontendpasantias;
 }
@@ -68,9 +64,6 @@ server {
 
         location /api/universidad/ {
             proxy_pass http://universidad/api/universidad-ms;
-        }
-        location /api/pasantias/ {
-            proxy_pass http://pasantias/api/pasantias-ms;
         }
         location /app/ {
             proxy_pass http://frontendpasantias/;
