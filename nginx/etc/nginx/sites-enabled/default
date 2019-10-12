@@ -2,8 +2,8 @@ upstream estudiantes {
   server estudiantes;
 }
 
-upstream convocatorias {
-  server convocatorias;
+upstream convocatoria {
+  server convocatoria;
 }
 
 upstream empresas {
@@ -43,7 +43,7 @@ server {
         }
 
         location /api/convocatorias/ {
-            proxy_pass http://convocatorias/api/convocatorias-ms;
+            proxy_pass http://convocatoria/api/convocatorias-ms;
         }
 
         location /api/empresas/ {
