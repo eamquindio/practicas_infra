@@ -1,0 +1,38 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: practicasalb
+spec:
+  selector:
+    app: practicasalb
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: practicasalb
+  labels:
+    app: practicasalb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: practicasalb
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: practicasalb
+        tier: backend
+    spec:
+      containers:
+      - name: practicasalb
+        image: gcr.io/${GOOGLE_PROJECT_ID}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}   
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
