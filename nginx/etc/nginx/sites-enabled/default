@@ -38,7 +38,7 @@ server {
             proxy_pass http://estudiantes/api/estudiantes-ms/;
         }
 
-        location /api/convocatorias/ {
+        location /api/convocatoria/ {
             proxy_pass http://convocatoria/api/convocatorias-ms;
         }
 
