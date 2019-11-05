@@ -28,6 +28,9 @@ upstream frontendpasantias {
 upstream seguridad {
   server seguridad;
 }
+upstream gateway {
+  server gateway;
+}
 
 server {
   listen        80;
