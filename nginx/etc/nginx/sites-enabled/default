@@ -25,10 +25,16 @@ upstream universidad {
 upstream frontendpasantias {
   server frontendpasantias;
 }
+upstream seguridad {
+  server seguridad;
+}
 
 server {
   listen        80;
   server_name   pasantiaseam.org;
+        location /api/seguridad/ {
+            proxy_pass http://seguridad/;
+        }
 
         location /api/estudiantes/ {
             proxy_pass http://estudiantes/api/estudiantes-ms/;
