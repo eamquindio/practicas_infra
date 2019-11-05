@@ -35,7 +35,9 @@ server {
         location /api/seguridad/ {
             proxy_pass http://seguridad/;
         }
-
+        location /api/pasantias/ {
+            proxy_pass http://gateway/api/pasantiaseam/;
+        }
         location /api/estudiantes/ {
             proxy_pass http://estudiantes/api/estudiantes-ms/;
         }
