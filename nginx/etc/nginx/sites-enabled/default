@@ -32,6 +32,10 @@ upstream gateway {
   server gateway;
 }
 
+upstream notificaciones {
+  server notificaciones;
+}
+
 
 server {
   listen        80;
@@ -39,6 +43,11 @@ server {
         location /api/seguridad/ {
             proxy_pass http://seguridad/;
         }
+        
+        location /api/notificaciones/ {
+            proxy_pass http://notificaciones/api/notifications-ms;
+        }
+        
         location /api/pasantias/ {
             proxy_pass http://gateway/api/pasantiaseam/;
         }
